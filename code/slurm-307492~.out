@@ -1,0 +1,381 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+probing_case 도입
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ RUNNING SCRIPT: job_n_NoAug_py_graphcodebert_sum.sh
+
+Wed Mar 22 17:05:25 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 465.19.01    Driver Version: 465.19.01    CUDA Version: 11.3     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  On   | 00000000:E1:00.0 Off |                  N/A |
+| 30%   30C    P8    22W / 350W |      1MiB / 24268MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2022 NVIDIA Corporation
+Built on Wed_Jun__8_16:49:14_PDT_2022
+Cuda compilation tools, release 11.7, V11.7.99
+Build cuda_11.7.r11.7/compiler.31442593_0
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ START TRAIN @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Source: python Target: desc
+Data path: /home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/
+Pre-trained model: microsoft/graphcodebert-base
+Model type: roberta
+Experiment name: graphcodebert_pl_nl_program
+TEST_FILE_SRC: /home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/test-Python-desc-tok.py TEST_FILE_TGT: /home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/test-Python-desc-tok.txt
+/home/ysnamgoong42/ws/XLCoST/code
+03/22/2023 17:05:30 - INFO - __main__ -   Namespace(adam_epsilon=1e-08, beam_size=5, config_name='microsoft/graphcodebert-base', dev_filename='/home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/val-Python-desc-tok.py,/home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/val-Python-desc-tok.txt', do_eval=True, do_lower_case=False, do_test=False, do_train=True, eval_batch_size=16, eval_steps=2500, gradient_accumulation_steps=1, learning_rate=5e-05, load_model_path=None, local_rank=-1, max_grad_norm=1.0, max_source_length=200, max_steps=-1, max_target_length=50, model_name_or_path='microsoft/graphcodebert-base', model_type='roberta', no_cuda=False, num_train_epochs=10.0, output_dir='/home/ysnamgoong42/ws/XLCoST/code/../graphcodebert_pl_nl_program/Python-desc', probing_case=0, seed=42, test_filename=None, tokenizer_name='microsoft/graphcodebert-base', train_batch_size=16, train_filename='/home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/train-Python-desc-tok.py,/home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/train-Python-desc-tok.txt', train_steps=5000, warmup_steps=0, weight_decay=0.0)
+03/22/2023 17:05:30 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False
+Some weights of the model checkpoint at microsoft/graphcodebert-base were not used when initializing RobertaModel: ['lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.weight', 'lm_head.bias', 'lm_head.dense.bias', 'lm_head.decoder.bias', 'lm_head.decoder.weight']
+- This IS expected if you are initializing RobertaModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of RobertaModel were not initialized from the model checkpoint at microsoft/graphcodebert-base and are newly initialized: ['roberta.pooler.dense.bias', 'roberta.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+03/22/2023 17:05:44 - INFO - __main__ -   *** Example ***
+03/22/2023 17:05:44 - INFO - __main__ -   idx: 0
+03/22/2023 17:05:44 - INFO - __main__ -   source_tokens: ['<s>', 'def', '_max', 'Pres', 'um', '_(', '_a', '_,', '_b', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_X', '_=', '_max', '_(', '_a', '_[', '_0', '_]', '_,', '_0', '_)', '_NEW', '_', 'LINE', '_for', '_i', '_in', '_range', '_(', '_1', '_,', '_len', '_(', '_a', '_)', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_a', '_[', '_i', '_]', '_+=', '_a', '_[', '_i', '_-', '_1', '_]', '_NEW', '_', 'LINE', '_X', '_=', '_max', '_(', '_X', '_,', '_a', '_[', '_i', '_]', '_)', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_Y', '_=', '_max', '_(', '_b', '_[', '_0', '_]', '_,', '_0', '_)', '_NEW', '_', 'LINE', '_for', '_i', '_in', '_range', '_(', '_1', '_,', '_len', '_(', '_b', '_)', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_b', '_[', '_i', '_]', '_+=', '_b', '_[', '_i', '_-', '_1', '_]', '_NEW', '_', 'LINE', '_Y', '_=', '_max', '_(', '_Y', '_,', '_b', '_[', '_i', '_]', '_)', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_return', '_X', '_+', '_Y', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_A', '_=', '_[', '_2', '_,', '_-', '_1', '_,', '_4', '_,', '_-', '_5', '_]', '_NEW', '_', 'LINE', '_B', '_=', '_[', '_4', '_,', '_-', '_3', '_,', '_12', '_,', '_4', '_,', '_-', '_3', '_]', '_NEW', '_', 'LINE', '_print', '_(', '_max', 'Pres', 'um', '_(', '_A', '_,', '_B', '_)', '_)', '_NEW', '_', '</s>']
+03/22/2023 17:05:44 - INFO - __main__ -   source_ids: 0 9232 19220 28917 783 36 10 2156 741 4839 4832 5178 1215 28302 12569 5382 1577 5457 19220 36 10 646 321 27779 2156 321 4839 5178 1215 28302 13 939 11 1186 36 112 2156 25528 36 10 4839 4839 4832 5178 1215 28302 12569 5382 10 646 939 27779 49371 10 646 939 111 112 27779 5178 1215 28302 1577 5457 19220 36 1577 2156 10 646 939 27779 4839 5178 1215 28302 211 1691 5382 854 5457 19220 36 741 646 321 27779 2156 321 4839 5178 1215 28302 13 939 11 1186 36 112 2156 25528 36 741 4839 4839 4832 5178 1215 28302 12569 5382 741 646 939 27779 49371 741 646 939 111 112 27779 5178 1215 28302 854 5457 19220 36 854 2156 741 646 939 27779 4839 5178 1215 28302 211 1691 5382 671 1577 2055 854 5178 1215 28302 211 1691 5382 83 5457 646 132 2156 111 112 2156 204 2156 111 195 27779 5178 1215 28302 163 5457 646 204 2156 111 155 2156 316 2156 204 2156 111 155 27779 5178 1215 28302 5780 36 19220 28917 783 36 83 2156 163 4839 4839 5178 1215 2
+03/22/2023 17:05:44 - INFO - __main__ -   source_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/22/2023 17:05:44 - INFO - __main__ -   target_tokens: ['<s>', 'Maximum', '_Pre', 'fix', '_Sum', '_possible', '_by', '_merging', '_two', '_given', '_arrays', '</s>']
+03/22/2023 17:05:44 - INFO - __main__ -   target_ids: 0 48089 5048 23032 9430 678 30 29002 80 576 42156 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/22/2023 17:05:44 - INFO - __main__ -   target_mask: 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/22/2023 17:05:44 - INFO - __main__ -   *** Example ***
+03/22/2023 17:05:44 - INFO - __main__ -   idx: 1
+03/22/2023 17:05:44 - INFO - __main__ -   source_tokens: ['<s>', 'import', '_math', '_NEW', '_', 'LINE', '_def', '_sum', 'Of', 'Two', 'C', 'ubes', '_(', '_n', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_lo', '_=', '_1', '_NEW', '_', 'LINE', '_hi', '_=', '_round', '_(', '_math', '_.', '_pow', '_(', '_n', '_,', '_1', '_/', '_3', '_)', '_)', '_NEW', '_', 'LINE', '_while', '_(', '_lo', '_<=', '_hi', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_cur', 'r', '_=', '_(', '_lo', '_*', '_lo', '_*', '_lo', '_+', '_hi', '_*', '_hi', '_*', '_hi', '_)', '_NEW', '_', 'LINE', '_if', '_(', '_cur', 'r', '_==', '_n', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_return', '_True', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_if', '_(', '_cur', 'r', '_<', '_n', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_lo', '_+=', '_1', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_else', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_hi', '_-=', '_1', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_D', 'ED', 'ENT', '_return', '_False', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_N', '_=', '_28', '_NEW', '_', 'LINE', '_if', '_(', '_sum', 'Of', 'Two', 'C', 'ubes', '_(', '_N', '_)', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_print', '_(', '_"', '_True', '_"', '_)', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_else', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_print', '_(', '_"', '_False', '_"', '_)', '_NEW', '_', 'LINE', '_D', 'ED', '</s>']
+03/22/2023 17:05:44 - INFO - __main__ -   source_ids: 0 41975 10638 5178 1215 28302 3816 6797 10643 9058 347 39749 36 295 4839 4832 5178 1215 28302 12569 5382 4600 5457 112 5178 1215 28302 20280 5457 1062 36 10638 479 30964 36 295 2156 112 1589 155 4839 4839 5178 1215 28302 150 36 4600 49230 20280 4839 4832 5178 1215 28302 12569 5382 5350 338 5457 36 4600 1009 4600 1009 4600 2055 20280 1009 20280 1009 20280 4839 5178 1215 28302 114 36 5350 338 45994 295 4839 4832 5178 1215 28302 12569 5382 671 7447 5178 1215 28302 211 1691 5382 114 36 5350 338 28696 295 4839 4832 5178 1215 28302 12569 5382 4600 49371 112 5178 1215 28302 211 1691 5382 1493 4832 5178 1215 28302 12569 5382 20280 49826 112 5178 1215 28302 211 1691 5382 211 1691 5382 671 35297 5178 1215 28302 211 1691 5382 234 5457 971 5178 1215 28302 114 36 6797 10643 9058 347 39749 36 234 4839 4839 4832 5178 1215 28302 12569 5382 5780 36 22 7447 22 4839 5178 1215 28302 211 1691 5382 1493 4832 5178 1215 28302 12569 5382 5780 36 22 35297 22 4839 5178 1215 28302 211 1691 2
+03/22/2023 17:05:44 - INFO - __main__ -   source_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/22/2023 17:05:44 - INFO - __main__ -   target_tokens: ['<s>', 'Check', '_if', '_a', '_number', '_can', '_be', '_represented', '_as', '_sum', '_of', '_two', '_positive', '_perfect', '_cubes', '</s>']
+03/22/2023 17:05:44 - INFO - __main__ -   target_ids: 0 26615 114 10 346 64 28 4625 25 6797 9 80 1313 1969 35788 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/22/2023 17:05:44 - INFO - __main__ -   target_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/22/2023 17:05:44 - INFO - __main__ -   *** Example ***
+03/22/2023 17:05:44 - INFO - __main__ -   idx: 2
+03/22/2023 17:05:44 - INFO - __main__ -   source_tokens: ['<s>', 's', 'ieve', '_=', '_[', '_1', '_]', '_*', '_(', '_100', '0000', '_+', '_1', '_)', '_NEW', '_', 'LINE', '_def', '_s', 'ieve', 'Of', 'Pr', 'imes', '_(', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_global', '_s', 'ieve', '_NEW', '_', 'LINE', '_N', '_=', '_100', '0000', '_NEW', '_', 'LINE', '_for', '_i', '_in', '_range', '_(', '_2', '_,', '_N', '_+', '_1', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_if', '_i', '_*', '_i', '_>', '_N', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_break', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_if', '_(', '_s', 'ieve', '_[', '_i', '_]', '_==', '_0', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_continue', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_for', '_j', '_in', '_range', '_(', '_i', '_*', '_i', '_,', '_N', '_+', '_1', '_,', '_i', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_s', 'ieve', '_[', '_j', '_]', '_=', '_0', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_D', 'ED', 'ENT', '_D', 'ED', 'ENT', '_def', '_get', 'Array', '_(', '_arr', '_,', '_N', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_global', '_s', 'ieve', '_NEW', '_', 'LINE', '_A', '_=', '_[', '_0', '_]', '_*', '_N', '_NEW', '_', 'LINE', '_v', '_=', '_[', '_]', '_NEW', '_', 'LINE', '_s', 'ieve', 'Of', 'Pr', 'imes', '_(', '_)', '_NEW', '_', 'LINE', '_for', '_i', '_in', '_range', '_(', '_2', '_,', '_int', '_(', '</s>']
+03/22/2023 17:05:44 - INFO - __main__ -   source_ids: 0 29 16637 5457 646 112 27779 1009 36 727 14200 2055 112 4839 5178 1215 28302 3816 579 16637 10643 21077 9452 36 4839 4832 5178 1215 28302 12569 5382 720 579 16637 5178 1215 28302 234 5457 727 14200 5178 1215 28302 13 939 11 1186 36 132 2156 234 2055 112 4839 4832 5178 1215 28302 12569 5382 114 939 1009 939 8061 234 4832 5178 1215 28302 12569 5382 1108 5178 1215 28302 211 1691 5382 114 36 579 16637 646 939 27779 45994 321 4839 4832 5178 1215 28302 12569 5382 535 5178 1215 28302 211 1691 5382 13 1236 11 1186 36 939 1009 939 2156 234 2055 112 2156 939 4839 4832 5178 1215 28302 12569 5382 579 16637 646 1236 27779 5457 321 5178 1215 28302 211 1691 5382 211 1691 5382 211 1691 5382 3816 120 48222 36 25743 2156 234 4839 4832 5178 1215 28302 12569 5382 720 579 16637 5178 1215 28302 83 5457 646 321 27779 1009 234 5178 1215 28302 748 5457 646 27779 5178 1215 28302 579 16637 10643 21077 9452 36 4839 5178 1215 28302 13 939 11 1186 36 132 2156 6979 36 2
+03/22/2023 17:05:44 - INFO - __main__ -   source_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/22/2023 17:05:44 - INFO - __main__ -   target_tokens: ['<s>', 'Gener', 'ate', '_an', '_N', '</s>']
+03/22/2023 17:05:44 - INFO - __main__ -   target_ids: 0 40025 877 41 234 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/22/2023 17:05:44 - INFO - __main__ -   target_mask: 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/22/2023 17:05:44 - INFO - __main__ -   *** Example ***
+03/22/2023 17:05:44 - INFO - __main__ -   idx: 3
+03/22/2023 17:05:44 - INFO - __main__ -   source_tokens: ['<s>', 'def', '_find', 'N', 'th', 'Number', '_(', '_N', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_result', '_=', '_0', '_NEW', '_', 'LINE', '_p', '_=', '_1', '_NEW', '_', 'LINE', '_while', '_(', '_N', '_>', '_0', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_result', '_+=', '_(', '_p', '_*', '_(', '_N', '_%', '_9', '_)', '_)', '_NEW', '_', 'LINE', '_N', '_=', '_N', '_//', '_9', '_NEW', '_', 'LINE', '_p', '_=', '_p', '_*', '_10', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_return', '_result', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_if', '___', 'name', '__', '_==', "_'", '__', '__', '_main', '__', '__', "_'", '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_N', '_=', '_9', '_NEW', '_', 'LINE', '_print', '_(', '_find', 'N', 'th', 'Number', '_(', '_N', '_)', '_)', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '</s>']
+03/22/2023 17:05:44 - INFO - __main__ -   source_ids: 0 9232 465 487 212 43623 36 234 4839 4832 5178 1215 28302 12569 5382 898 5457 321 5178 1215 28302 181 5457 112 5178 1215 28302 150 36 234 8061 321 4839 4832 5178 1215 28302 12569 5382 898 49371 36 181 1009 36 234 7606 361 4839 4839 5178 1215 28302 234 5457 234 21277 361 5178 1215 28302 181 5457 181 1009 158 5178 1215 28302 211 1691 5382 671 898 5178 1215 28302 211 1691 5382 114 27148 13650 30529 45994 128 18134 18134 1049 18134 18134 128 4832 5178 1215 28302 12569 5382 234 5457 361 5178 1215 28302 5780 36 465 487 212 43623 36 234 4839 4839 5178 1215 28302 211 1691 5382 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/22/2023 17:05:44 - INFO - __main__ -   source_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/22/2023 17:05:44 - INFO - __main__ -   target_tokens: ['<s>', 'N', 'th', '_natural', '_number', '_after', '_removing', '_all', '_numbers', '_consisting', '_of', '_the', '_digit', '_9', '</s>']
+03/22/2023 17:05:44 - INFO - __main__ -   target_ids: 0 487 212 1632 346 71 8201 70 1530 17402 9 5 16808 361 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/22/2023 17:05:44 - INFO - __main__ -   target_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/22/2023 17:05:44 - INFO - __main__ -   *** Example ***
+03/22/2023 17:05:44 - INFO - __main__ -   idx: 4
+03/22/2023 17:05:44 - INFO - __main__ -   source_tokens: ['<s>', 'import', '_math', '_NEW', '_', 'LINE', '_def', '_check', '_(', '_A', '_,', '_B', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_if', '_(', '_A', '_==', '_B', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_return', '_1', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_dig', '1', '_=', '_math', '_.', '_floor', '_(', '_math', '_.', '_log', '10', '_(', '_A', '_)', '_+', '_1', '_)', '_NEW', '_', 'LINE', '_dig', '2', '_=', '_math', '_.', '_floor', '_(', '_math', '_.', '_log', '10', '_(', '_B', '_)', '_+', '_1', '_)', '_NEW', '_', 'LINE', '_if', '_(', '_dig', '1', '_!=', '_dig', '2', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_return', '_0', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_temp', '_=', '_A', '_NEW', '_', 'LINE', '_while', '_(', '_True', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_power', '_=', '_pow', '_(', '_10', '_,', '_dig', '1', '_-', '_1', '_)', '_NEW', '_', 'LINE', '_first', 'digit', '_=', '_A', '_//', '_power', '_NEW', '_', 'LINE', '_A', '_=', '_A', '_-', '_first', 'digit', '_*', '_power', '_NEW', '_', 'LINE', '_A', '_=', '_A', '_*', '_10', '_+', '_first', 'digit', '_NEW', '_', 'LINE', '_if', '_(', '_A', '_==', '_B', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_return', '_1', '_NEW', '_', 'LINE', '_D', 'ED', 'ENT', '_if', '_(', '_A', '_==', '_temp', '_)', '_:', '_NEW', '_', 'LINE', '_IND', 'ENT', '_return', '_0', '_NEW', '_', 'LINE', '</s>']
+03/22/2023 17:05:44 - INFO - __main__ -   source_ids: 0 41975 10638 5178 1215 28302 3816 1649 36 83 2156 163 4839 4832 5178 1215 28302 12569 5382 114 36 83 45994 163 4839 4832 5178 1215 28302 12569 5382 671 112 5178 1215 28302 211 1691 5382 8512 134 5457 10638 479 1929 36 10638 479 7425 698 36 83 4839 2055 112 4839 5178 1215 28302 8512 176 5457 10638 479 1929 36 10638 479 7425 698 36 163 4839 2055 112 4839 5178 1215 28302 114 36 8512 134 49333 8512 176 4839 4832 5178 1215 28302 12569 5382 671 321 5178 1215 28302 211 1691 5382 32196 5457 83 5178 1215 28302 150 36 7447 4839 4832 5178 1215 28302 12569 5382 476 5457 30964 36 158 2156 8512 134 111 112 4839 5178 1215 28302 78 10289 5457 83 21277 476 5178 1215 28302 83 5457 83 111 78 10289 1009 476 5178 1215 28302 83 5457 83 1009 158 2055 78 10289 5178 1215 28302 114 36 83 45994 163 4839 4832 5178 1215 28302 12569 5382 671 112 5178 1215 28302 211 1691 5382 114 36 83 45994 32196 4839 4832 5178 1215 28302 12569 5382 671 321 5178 1215 28302 2
+03/22/2023 17:05:44 - INFO - __main__ -   source_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/22/2023 17:05:44 - INFO - __main__ -   target_tokens: ['<s>', 'Check', '_if', '_an', '_integer', '_is', '_rotation', '_of', '_another', '_given', '_integer', '</s>']
+03/22/2023 17:05:44 - INFO - __main__ -   target_ids: 0 26615 114 41 48335 16 10134 9 277 576 48335 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/22/2023 17:05:44 - INFO - __main__ -   target_mask: 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/home/ysnamgoong42/miniconda3/envs/xlcost/lib/python3.8/site-packages/transformers/optimization.py:306: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+03/22/2023 17:05:56 - INFO - __main__ -   ***** Running training *****
+03/22/2023 17:05:56 - INFO - __main__ -     Num examples = 9263
+03/22/2023 17:05:56 - INFO - __main__ -     Batch size = 16
+03/22/2023 17:05:56 - INFO - __main__ -     Num epoch = 9
+03/22/2023 17:06:16 - INFO - __main__ -     step 100 loss 6.1388
+03/22/2023 17:06:35 - INFO - __main__ -     step 200 loss 5.3941
+03/22/2023 17:06:53 - INFO - __main__ -     step 300 loss 4.9695
+03/22/2023 17:07:12 - INFO - __main__ -     step 400 loss 4.7033
+03/22/2023 17:07:31 - INFO - __main__ -     step 500 loss 4.4835
+03/22/2023 17:07:49 - INFO - __main__ -     step 600 loss 4.3125
+03/22/2023 17:08:08 - INFO - __main__ -     step 700 loss 4.1639
+03/22/2023 17:08:27 - INFO - __main__ -     step 800 loss 4.0324
+03/22/2023 17:08:46 - INFO - __main__ -     step 900 loss 3.9163
+03/22/2023 17:09:04 - INFO - __main__ -     step 1000 loss 3.8201
+03/22/2023 17:09:23 - INFO - __main__ -     step 1100 loss 3.7267
+03/22/2023 17:09:34 - INFO - __main__ -   
+***** Running evaluation *****
+03/22/2023 17:09:34 - INFO - __main__ -     Num examples = 472
+03/22/2023 17:09:34 - INFO - __main__ -     Batch size = 16
+03/22/2023 17:09:36 - INFO - __main__ -     eval_ppl = 21.06512
+03/22/2023 17:09:36 - INFO - __main__ -     global_step = 1157
+03/22/2023 17:09:36 - INFO - __main__ -     train_loss = 3.6833
+03/22/2023 17:09:36 - INFO - __main__ -     ********************
+03/22/2023 17:09:41 - INFO - __main__ -     Best ppl:21.06512
+03/22/2023 17:09:41 - INFO - __main__ -     ********************
+03/22/2023 17:10:36 - INFO - __main__ -     bleu-4 = 5.42 
+03/22/2023 17:10:36 - INFO - __main__ -     xMatch = 0.0 
+03/22/2023 17:10:36 - INFO - __main__ -     ********************
+03/22/2023 17:10:36 - INFO - __main__ -     Best bleu:5.42
+03/22/2023 17:10:36 - INFO - __main__ -     ********************
+03/22/2023 17:10:49 - INFO - __main__ -     step 1200 loss 2.6932
+03/22/2023 17:11:08 - INFO - __main__ -     step 1300 loss 2.6509
+03/22/2023 17:11:27 - INFO - __main__ -     step 1400 loss 2.61
+03/22/2023 17:11:45 - INFO - __main__ -     step 1500 loss 2.5681
+03/22/2023 17:12:04 - INFO - __main__ -     step 1600 loss 2.5332
+03/22/2023 17:12:22 - INFO - __main__ -     step 1700 loss 2.5017
+03/22/2023 17:12:41 - INFO - __main__ -     step 1800 loss 2.47
+03/22/2023 17:12:59 - INFO - __main__ -     step 1900 loss 2.4383
+03/22/2023 17:13:17 - INFO - __main__ -     step 2000 loss 2.4048
+03/22/2023 17:13:36 - INFO - __main__ -     step 2100 loss 2.3693
+03/22/2023 17:13:54 - INFO - __main__ -     step 2200 loss 2.3381
+03/22/2023 17:14:13 - INFO - __main__ -     step 2300 loss 2.3091
+03/22/2023 17:14:15 - INFO - __main__ -   
+***** Running evaluation *****
+03/22/2023 17:14:15 - INFO - __main__ -     Num examples = 472
+03/22/2023 17:14:15 - INFO - __main__ -     Batch size = 16
+03/22/2023 17:14:17 - INFO - __main__ -     eval_ppl = 17.96631
+03/22/2023 17:14:17 - INFO - __main__ -     global_step = 2314
+03/22/2023 17:14:17 - INFO - __main__ -     train_loss = 2.3052
+03/22/2023 17:14:17 - INFO - __main__ -     ********************
+03/22/2023 17:14:24 - INFO - __main__ -     Best ppl:17.96631
+03/22/2023 17:14:24 - INFO - __main__ -     ********************
+03/22/2023 17:15:16 - INFO - __main__ -     bleu-4 = 5.73 
+03/22/2023 17:15:16 - INFO - __main__ -     xMatch = 0.0 
+03/22/2023 17:15:16 - INFO - __main__ -     ********************
+03/22/2023 17:15:16 - INFO - __main__ -     Best bleu:5.73
+03/22/2023 17:15:16 - INFO - __main__ -     ********************
+03/22/2023 17:15:38 - INFO - __main__ -     step 2400 loss 1.9322
+03/22/2023 17:15:57 - INFO - __main__ -     step 2500 loss 1.8973
+03/22/2023 17:16:16 - INFO - __main__ -     step 2600 loss 1.8865
+03/22/2023 17:16:34 - INFO - __main__ -     step 2700 loss 1.8539
+03/22/2023 17:16:53 - INFO - __main__ -     step 2800 loss 1.8321
+03/22/2023 17:17:11 - INFO - __main__ -     step 2900 loss 1.8068
+03/22/2023 17:17:30 - INFO - __main__ -     step 3000 loss 1.7856
+03/22/2023 17:17:48 - INFO - __main__ -     step 3100 loss 1.763
+03/22/2023 17:18:07 - INFO - __main__ -     step 3200 loss 1.7431
+03/22/2023 17:18:25 - INFO - __main__ -     step 3300 loss 1.7198
+03/22/2023 17:18:43 - INFO - __main__ -     step 3400 loss 1.699
+03/22/2023 17:18:56 - INFO - __main__ -   
+***** Running evaluation *****
+03/22/2023 17:18:56 - INFO - __main__ -     Num examples = 472
+03/22/2023 17:18:56 - INFO - __main__ -     Batch size = 16
+03/22/2023 17:18:58 - INFO - __main__ -     eval_ppl = 18.82961
+03/22/2023 17:18:58 - INFO - __main__ -     global_step = 3471
+03/22/2023 17:18:58 - INFO - __main__ -     train_loss = 1.6838
+03/22/2023 17:18:58 - INFO - __main__ -     ********************
+03/22/2023 17:19:50 - INFO - __main__ -     bleu-4 = 6.33 
+03/22/2023 17:19:50 - INFO - __main__ -     xMatch = 0.0 
+03/22/2023 17:19:50 - INFO - __main__ -     ********************
+03/22/2023 17:19:50 - INFO - __main__ -     Best bleu:6.33
+03/22/2023 17:19:50 - INFO - __main__ -     ********************
+03/22/2023 17:19:58 - INFO - __main__ -     step 3500 loss 1.4183
+03/22/2023 17:20:17 - INFO - __main__ -     step 3600 loss 1.4333
+03/22/2023 17:20:35 - INFO - __main__ -     step 3700 loss 1.4147
+03/22/2023 17:20:54 - INFO - __main__ -     step 3800 loss 1.3952
+03/22/2023 17:21:12 - INFO - __main__ -     step 3900 loss 1.3772
+03/22/2023 17:21:31 - INFO - __main__ -     step 4000 loss 1.3605
+03/22/2023 17:21:49 - INFO - __main__ -     step 4100 loss 1.3455
+03/22/2023 17:22:08 - INFO - __main__ -     step 4200 loss 1.3322
+03/22/2023 17:22:26 - INFO - __main__ -     step 4300 loss 1.3195
+03/22/2023 17:22:45 - INFO - __main__ -     step 4400 loss 1.3064
+03/22/2023 17:23:03 - INFO - __main__ -     step 4500 loss 1.2908
+03/22/2023 17:23:21 - INFO - __main__ -     step 4600 loss 1.2787
+03/22/2023 17:23:27 - INFO - __main__ -   
+***** Running evaluation *****
+03/22/2023 17:23:27 - INFO - __main__ -     Num examples = 472
+03/22/2023 17:23:27 - INFO - __main__ -     Batch size = 16
+03/22/2023 17:23:28 - INFO - __main__ -     eval_ppl = 19.70754
+03/22/2023 17:23:28 - INFO - __main__ -     global_step = 4628
+03/22/2023 17:23:28 - INFO - __main__ -     train_loss = 1.2748
+03/22/2023 17:23:28 - INFO - __main__ -     ********************
+03/22/2023 17:24:18 - INFO - __main__ -     bleu-4 = 6.57 
+03/22/2023 17:24:18 - INFO - __main__ -     xMatch = 0.2119 
+03/22/2023 17:24:18 - INFO - __main__ -     ********************
+03/22/2023 17:24:18 - INFO - __main__ -     Best bleu:6.57
+03/22/2023 17:24:18 - INFO - __main__ -     ********************
+03/22/2023 17:24:39 - INFO - __main__ -     step 4700 loss 1.104
+03/22/2023 17:24:58 - INFO - __main__ -     step 4800 loss 1.1062
+03/22/2023 17:25:16 - INFO - __main__ -     step 4900 loss 1.1065
+03/22/2023 17:25:35 - INFO - __main__ -     step 5000 loss 1.0953
+03/22/2023 17:25:53 - INFO - __main__ -     step 5100 loss 1.0825
+03/22/2023 17:26:11 - INFO - __main__ -     step 5200 loss 1.0745
+03/22/2023 17:26:30 - INFO - __main__ -     step 5300 loss 1.0637
+03/22/2023 17:26:48 - INFO - __main__ -     step 5400 loss 1.0574
+03/22/2023 17:27:07 - INFO - __main__ -     step 5500 loss 1.0549
+03/22/2023 17:27:25 - INFO - __main__ -     step 5600 loss 1.0475
+03/22/2023 17:27:44 - INFO - __main__ -     step 5700 loss 1.041
+03/22/2023 17:28:00 - INFO - __main__ -   
+***** Running evaluation *****
+03/22/2023 17:28:00 - INFO - __main__ -     Num examples = 472
+03/22/2023 17:28:00 - INFO - __main__ -     Batch size = 16
+03/22/2023 17:28:01 - INFO - __main__ -     eval_ppl = 19.65802
+03/22/2023 17:28:01 - INFO - __main__ -     global_step = 5785
+03/22/2023 17:28:01 - INFO - __main__ -     train_loss = 1.0351
+03/22/2023 17:28:01 - INFO - __main__ -     ********************
+03/22/2023 17:28:54 - INFO - __main__ -     bleu-4 = 6.78 
+03/22/2023 17:28:54 - INFO - __main__ -     xMatch = 0.0 
+03/22/2023 17:28:54 - INFO - __main__ -     ********************
+03/22/2023 17:28:54 - INFO - __main__ -     Best bleu:6.78
+03/22/2023 17:28:54 - INFO - __main__ -     ********************
+03/22/2023 17:29:10 - INFO - __main__ -   Namespace(adam_epsilon=1e-08, beam_size=5, config_name='microsoft/graphcodebert-base', dev_filename=None, do_eval=False, do_lower_case=False, do_test=True, do_train=False, eval_batch_size=16, eval_steps=-1, gradient_accumulation_steps=1, learning_rate=5e-05, load_model_path='/home/ysnamgoong42/ws/XLCoST/code/../graphcodebert_pl_nl_program/Python-desc/checkpoint-best-ppl/pytorch_model.bin', local_rank=-1, max_grad_norm=1.0, max_source_length=200, max_steps=-1, max_target_length=50, model_name_or_path='microsoft/graphcodebert-base', model_type='roberta', no_cuda=False, num_train_epochs=3.0, output_dir='/home/ysnamgoong42/ws/XLCoST/code/../graphcodebert_pl_nl_program/Python-desc', probing_case=0, seed=42, test_filename='/home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/test-Python-desc-tok.py,/home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/test-Python-desc-tok.txt', tokenizer_name='microsoft/graphcodebert-base', train_batch_size=8, train_filename=None, train_steps=-1, warmup_steps=0, weight_decay=0.0)
+03/22/2023 17:29:10 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False
+Some weights of the model checkpoint at microsoft/graphcodebert-base were not used when initializing RobertaModel: ['lm_head.decoder.bias', 'lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.decoder.weight', 'lm_head.bias', 'lm_head.dense.weight']
+- This IS expected if you are initializing RobertaModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of RobertaModel were not initialized from the model checkpoint at microsoft/graphcodebert-base and are newly initialized: ['roberta.pooler.dense.bias', 'roberta.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+03/22/2023 17:29:19 - INFO - __main__ -   reload model from /home/ysnamgoong42/ws/XLCoST/code/../graphcodebert_pl_nl_program/Python-desc/checkpoint-best-ppl/pytorch_model.bin
+03/22/2023 17:29:22 - INFO - __main__ -   Test file: /home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/test-Python-desc-tok.py,/home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/test-Python-desc-tok.txt
+  0%|          | 0/56 [00:00<?, ?it/s]  2%|▏         | 1/56 [00:02<02:41,  2.94s/it]  4%|▎         | 2/56 [00:04<02:07,  2.37s/it]  5%|▌         | 3/56 [00:06<01:51,  2.10s/it]  7%|▋         | 4/56 [00:08<01:37,  1.88s/it]  9%|▉         | 5/56 [00:10<01:33,  1.84s/it] 11%|█         | 6/56 [00:11<01:30,  1.80s/it] 12%|█▎        | 7/56 [00:13<01:27,  1.78s/it] 14%|█▍        | 8/56 [00:15<01:23,  1.73s/it] 16%|█▌        | 9/56 [00:16<01:21,  1.73s/it] 18%|█▊        | 10/56 [00:19<01:26,  1.87s/it] 20%|█▉        | 11/56 [00:20<01:21,  1.81s/it] 21%|██▏       | 12/56 [00:22<01:15,  1.71s/it] 23%|██▎       | 13/56 [00:23<01:13,  1.71s/it] 25%|██▌       | 14/56 [00:25<01:10,  1.68s/it] 27%|██▋       | 15/56 [00:27<01:08,  1.67s/it] 29%|██▊       | 16/56 [00:28<01:05,  1.64s/it] 30%|███       | 17/56 [00:30<01:08,  1.75s/it] 32%|███▏      | 18/56 [00:32<01:10,  1.85s/it] 34%|███▍      | 19/56 [00:34<01:03,  1.72s/it] 36%|███▌      | 20/56 [00:35<00:59,  1.65s/it] 38%|███▊      | 21/56 [00:37<00:55,  1.57s/it] 39%|███▉      | 22/56 [00:38<00:52,  1.56s/it] 41%|████      | 23/56 [00:40<00:52,  1.58s/it] 43%|████▎     | 24/56 [00:41<00:52,  1.63s/it] 45%|████▍     | 25/56 [00:43<00:51,  1.66s/it] 46%|████▋     | 26/56 [00:45<00:49,  1.67s/it] 48%|████▊     | 27/56 [00:47<00:47,  1.64s/it] 50%|█████     | 28/56 [00:48<00:46,  1.67s/it] 52%|█████▏    | 29/56 [00:50<00:45,  1.67s/it] 54%|█████▎    | 30/56 [00:52<00:42,  1.65s/it] 55%|█████▌    | 31/56 [00:53<00:42,  1.70s/it] 57%|█████▋    | 32/56 [00:55<00:40,  1.70s/it] 59%|█████▉    | 33/56 [00:57<00:40,  1.75s/it] 61%|██████    | 34/56 [00:58<00:36,  1.67s/it] 62%|██████▎   | 35/56 [01:00<00:36,  1.74s/it] 64%|██████▍   | 36/56 [01:02<00:34,  1.73s/it] 66%|██████▌   | 37/56 [01:03<00:31,  1.63s/it] 68%|██████▊   | 38/56 [01:05<00:28,  1.61s/it] 70%|██████▉   | 39/56 [01:06<00:26,  1.56s/it] 71%|███████▏  | 40/56 [01:08<00:26,  1.67s/it] 73%|███████▎  | 41/56 [01:11<00:27,  1.85s/it] 75%|███████▌  | 42/56 [01:12<00:24,  1.76s/it] 77%|███████▋  | 43/56 [01:14<00:21,  1.68s/it] 79%|███████▊  | 44/56 [01:15<00:19,  1.65s/it] 80%|████████  | 45/56 [01:17<00:18,  1.64s/it] 82%|████████▏ | 46/56 [01:19<00:17,  1.70s/it] 84%|████████▍ | 47/56 [01:20<00:15,  1.67s/it] 86%|████████▌ | 48/56 [01:22<00:12,  1.59s/it] 88%|████████▊ | 49/56 [01:24<00:11,  1.71s/it] 89%|████████▉ | 50/56 [01:25<00:09,  1.60s/it] 91%|█████████ | 51/56 [01:27<00:07,  1.58s/it] 93%|█████████▎| 52/56 [01:28<00:06,  1.66s/it] 95%|█████████▍| 53/56 [01:30<00:04,  1.65s/it] 96%|█████████▋| 54/56 [01:32<00:03,  1.78s/it] 98%|█████████▊| 55/56 [01:34<00:01,  1.75s/it]100%|██████████| 56/56 [01:35<00:00,  1.44s/it]100%|██████████| 56/56 [01:35<00:00,  1.70s/it]
+03/22/2023 17:30:58 - INFO - __main__ -     bleu-4 = 6.68 
+03/22/2023 17:30:58 - INFO - __main__ -     xMatch = 0.1127 
+03/22/2023 17:30:58 - INFO - __main__ -     ********************
+tokenizer.decode(t,: Minimum sum of absolute differences between all pairs of an array
+tokenizer.decode(t,: Find N
+tokenizer.decode(t,: Generate an N
+tokenizer.decode(t,: Check if it is possible to reach the point from the given range
+tokenizer.decode(t,: Maximum point between two points
+tokenizer.decode(t,: D Numbers
+tokenizer.decode(t,: Number of set bits in a number
+tokenizer.decode(t,: Print left rotation of an array
+tokenizer.decode(t,: Find first missing number in a sorted array
+tokenizer.decode(t,: Longest Common Subsequence | DP
+tokenizer.decode(t,: Number of ways to cover a number
+tokenizer.decode(t,: Check if a number can be expressed as sum of two consecutive numbers
+tokenizer.decode(t,: Count number of triplets ( i , j ) such that arr [ i ] * arr [ j ] * arr [ j ]
+tokenizer.decode(t,: Program to calculate area of a semicircle
+tokenizer.decode(t,: Count pairs from an array whose sum is equal to N
+tokenizer.decode(t,: Longest Increasing Subsequence | DP
+tokenizer.decode(t,: Sum of squares of the first n natural numbers
+tokenizer.decode(t,: Sort an array in descending order
+tokenizer.decode(t,: Find the largest square rectangle with given sum
+tokenizer.decode(t,: Number of subsets with given set bits
+tokenizer.decode(t,: Count number of paths from top left to bottom right
+tokenizer.decode(t,: Add two numbers
+tokenizer.decode(t,: XOR of all subarrays of a given range
+tokenizer.decode(t,: Reverse an array according to given conditions
+tokenizer.decode(t,: Longest sub
+tokenizer.decode(t,: Length of Longest subsequence with consecutive elements
+tokenizer.decode(t,: Number of subsets with sum K
+tokenizer.decode(t,: Count pairs from an array whose sum is greater than K
+tokenizer.decode(t,: Check if it is possible to make two sorted arrays equal
+tokenizer.decode(t,: Minimum steps required to make all array elements equal
+tokenizer.decode(t,: Rearrange an array such that sum of all elements are adjacent
+tokenizer.decode(t,: Minimum number of operations required to make a binary string alternating
+tokenizer.decode(t,: Check if sum of two arrays are equal or not
+tokenizer.decode(t,: Largest sub
+tokenizer.decode(t,: Generate palindromic string from given string
+tokenizer.decode(t,: Lexicographically permutation of a given string
+tokenizer.decode(t,: Count occurrences of a word in a sentence
+tokenizer.decode(t,: Largest circle that can be inscribed in a semicircle
+tokenizer.decode(t,: Minimize difference between any two numbers such that their sum is minimum
+tokenizer.decode(t,: Product of all pairs ( i , j ) in an array such that arr [ i ] < j ]
+tokenizer.decode(t,: Check if it is possible to make two integers equal by given operations
+tokenizer.decode(t,: Check whether a given point lies or not
+tokenizer.decode(t,: Largest subarray with sum greater than K
+tokenizer.decode(t,: Sum of all prime factors of a number
+tokenizer.decode(t,: Divide two numbers such that two numbers are equal
+tokenizer.decode(t,: Rearrange an array to maximize the sum of the given array
+tokenizer.decode(t,: Check if two arrays are permutation of each other
+tokenizer.decode(t,: Average of n
+tokenizer.decode(t,: Count pairs from an array whose product is equal to the given array
+tokenizer.decode(t,: Minimum number of operations required to reduce N to 0
+tokenizer.decode(t,: Reverse a number using digits
+tokenizer.decode(t,: Number of sub
+tokenizer.decode(t,: Number of n
+tokenizer.decode(t,: Print all sub
+tokenizer.decode(t,: Sort an array according to given numbers
+tokenizer.decode(t,: Minimize difference between two elements such that their sum is minimum
+usage: evaluator.py [-h] [--references REFERENCES] [--predictions PREDICTIONS]
+evaluator.py: error: unrecognized arguments:  
+run_NL_PL_new.sh: line 220: --references: command not found
+usage: calc_code_bleu.py [-h] --refs REFS [REFS ...] --hyp HYP --lang
+                         {java,javascript,c_sharp,php,go,python,cpp,c,ruby}
+                         [--params PARAMS]
+calc_code_bleu.py: error: the following arguments are required: --refs, --hyp, --lang
+run_NL_PL_new.sh: line 226: --ref: command not found
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ START EVAL @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Source: python Target: desc
+Data path: /home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/
+Pre-trained model: microsoft/graphcodebert-base
+Model type: roberta
+Experiment name: graphcodebert_pl_nl_program
+TEST_FILE_SRC: /home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/test-Python-desc-tok.py TEST_FILE_TGT: /home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/test-Python-desc-tok.txt
+03/22/2023 17:31:04 - INFO - __main__ -   Namespace(adam_epsilon=1e-08, beam_size=5, config_name='microsoft/graphcodebert-base', dev_filename=None, do_eval=False, do_lower_case=False, do_test=True, do_train=False, eval_batch_size=16, eval_steps=-1, gradient_accumulation_steps=1, learning_rate=5e-05, load_model_path='/home/ysnamgoong42/ws/XLCoST/code/../graphcodebert_pl_nl_program/Python-desc/checkpoint-best-ppl/pytorch_model.bin', local_rank=-1, max_grad_norm=1.0, max_source_length=200, max_steps=-1, max_target_length=50, model_name_or_path='microsoft/graphcodebert-base', model_type='roberta', no_cuda=False, num_train_epochs=3.0, output_dir='/home/ysnamgoong42/ws/XLCoST/code/../graphcodebert_pl_nl_program/Python-desc', probing_case=0, seed=42, test_filename='/home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/test-Python-desc-tok.py,/home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/test-Python-desc-tok.txt', tokenizer_name='microsoft/graphcodebert-base', train_batch_size=8, train_filename=None, train_steps=-1, warmup_steps=0, weight_decay=0.0)
+03/22/2023 17:31:05 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False
+Some weights of the model checkpoint at microsoft/graphcodebert-base were not used when initializing RobertaModel: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.decoder.weight', 'lm_head.decoder.bias', 'lm_head.layer_norm.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.bias']
+- This IS expected if you are initializing RobertaModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of RobertaModel were not initialized from the model checkpoint at microsoft/graphcodebert-base and are newly initialized: ['roberta.pooler.dense.bias', 'roberta.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+03/22/2023 17:31:14 - INFO - __main__ -   reload model from /home/ysnamgoong42/ws/XLCoST/code/../graphcodebert_pl_nl_program/Python-desc/checkpoint-best-ppl/pytorch_model.bin
+03/22/2023 17:31:17 - INFO - __main__ -   Test file: /home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/test-Python-desc-tok.py,/home/ysnamgoong42/ws/XLCoST/g4g/XLCoST_data/pair_data_tok_full_desc/Python-desc/test-Python-desc-tok.txt
+  0%|          | 0/56 [00:00<?, ?it/s]  2%|▏         | 1/56 [00:03<02:56,  3.21s/it]  4%|▎         | 2/56 [00:05<02:12,  2.46s/it]  5%|▌         | 3/56 [00:06<01:54,  2.16s/it]  7%|▋         | 4/56 [00:08<01:40,  1.93s/it]  9%|▉         | 5/56 [00:10<01:33,  1.84s/it] 11%|█         | 6/56 [00:11<01:28,  1.77s/it] 12%|█▎        | 7/56 [00:13<01:25,  1.74s/it] 14%|█▍        | 8/56 [00:15<01:22,  1.71s/it] 16%|█▌        | 9/56 [00:16<01:19,  1.69s/it] 18%|█▊        | 10/56 [00:18<01:23,  1.81s/it] 20%|█▉        | 11/56 [00:20<01:19,  1.77s/it] 21%|██▏       | 12/56 [00:22<01:14,  1.68s/it] 23%|██▎       | 13/56 [00:23<01:12,  1.69s/it] 25%|██▌       | 14/56 [00:25<01:10,  1.67s/it] 27%|██▋       | 15/56 [00:26<01:06,  1.63s/it] 29%|██▊       | 16/56 [00:28<01:02,  1.57s/it] 30%|███       | 17/56 [00:30<01:05,  1.67s/it] 32%|███▏      | 18/56 [00:32<01:07,  1.77s/it] 34%|███▍      | 19/56 [00:33<01:01,  1.67s/it] 36%|███▌      | 20/56 [00:35<00:57,  1.61s/it] 38%|███▊      | 21/56 [00:36<00:53,  1.54s/it] 39%|███▉      | 22/56 [00:37<00:51,  1.51s/it] 41%|████      | 23/56 [00:39<00:50,  1.52s/it] 43%|████▎     | 24/56 [00:41<00:50,  1.57s/it] 45%|████▍     | 25/56 [00:42<00:49,  1.59s/it] 46%|████▋     | 26/56 [00:44<00:47,  1.59s/it] 48%|████▊     | 27/56 [00:45<00:45,  1.57s/it] 50%|█████     | 28/56 [00:47<00:44,  1.59s/it] 52%|█████▏    | 29/56 [00:49<00:42,  1.59s/it] 54%|█████▎    | 30/56 [00:50<00:40,  1.56s/it] 55%|█████▌    | 31/56 [00:52<00:39,  1.59s/it] 57%|█████▋    | 32/56 [00:53<00:38,  1.61s/it] 59%|█████▉    | 33/56 [00:55<00:38,  1.67s/it] 61%|██████    | 34/56 [00:57<00:35,  1.62s/it] 62%|██████▎   | 35/56 [00:59<00:34,  1.66s/it] 64%|██████▍   | 36/56 [01:00<00:33,  1.66s/it] 66%|██████▌   | 37/56 [01:02<00:30,  1.61s/it] 68%|██████▊   | 38/56 [01:03<00:28,  1.60s/it] 70%|██████▉   | 39/56 [01:05<00:26,  1.58s/it] 71%|███████▏  | 40/56 [01:07<00:26,  1.66s/it] 73%|███████▎  | 41/56 [01:09<00:27,  1.84s/it] 75%|███████▌  | 42/56 [01:10<00:24,  1.76s/it] 77%|███████▋  | 43/56 [01:12<00:21,  1.68s/it] 79%|███████▊  | 44/56 [01:14<00:19,  1.66s/it] 80%|████████  | 45/56 [01:15<00:18,  1.65s/it] 82%|████████▏ | 46/56 [01:17<00:17,  1.74s/it] 84%|████████▍ | 47/56 [01:19<00:15,  1.71s/it] 86%|████████▌ | 48/56 [01:20<00:13,  1.64s/it] 88%|████████▊ | 49/56 [01:22<00:12,  1.77s/it] 89%|████████▉ | 50/56 [01:24<00:09,  1.64s/it] 91%|█████████ | 51/56 [01:25<00:07,  1.59s/it] 93%|█████████▎| 52/56 [01:27<00:06,  1.68s/it] 95%|█████████▍| 53/56 [01:29<00:05,  1.68s/it] 96%|█████████▋| 54/56 [01:31<00:03,  1.81s/it] 98%|█████████▊| 55/56 [01:33<00:01,  1.77s/it]100%|██████████| 56/56 [01:33<00:00,  1.44s/it]100%|██████████| 56/56 [01:33<00:00,  1.67s/it]
+03/22/2023 17:32:52 - INFO - __main__ -     bleu-4 = 6.68 
+03/22/2023 17:32:52 - INFO - __main__ -     xMatch = 0.1127 
+03/22/2023 17:32:52 - INFO - __main__ -     ********************
+tokenizer.decode(t,: Minimum sum of absolute differences between all pairs of an array
+tokenizer.decode(t,: Find N
+tokenizer.decode(t,: Generate an N
+tokenizer.decode(t,: Check if it is possible to reach the point from the given range
+tokenizer.decode(t,: Maximum point between two points
+tokenizer.decode(t,: D Numbers
+tokenizer.decode(t,: Number of set bits in a number
+tokenizer.decode(t,: Print left rotation of an array
+tokenizer.decode(t,: Find first missing number in a sorted array
+tokenizer.decode(t,: Longest Common Subsequence | DP
+tokenizer.decode(t,: Number of ways to cover a number
+tokenizer.decode(t,: Check if a number can be expressed as sum of two consecutive numbers
+tokenizer.decode(t,: Count number of triplets ( i , j ) such that arr [ i ] * arr [ j ] * arr [ j ]
+tokenizer.decode(t,: Program to calculate area of a semicircle
+tokenizer.decode(t,: Count pairs from an array whose sum is equal to N
+tokenizer.decode(t,: Longest Increasing Subsequence | DP
+tokenizer.decode(t,: Sum of squares of the first n natural numbers
+tokenizer.decode(t,: Sort an array in descending order
+tokenizer.decode(t,: Find the largest square rectangle with given sum
+tokenizer.decode(t,: Number of subsets with given set bits
+tokenizer.decode(t,: Count number of paths from top left to bottom right
+tokenizer.decode(t,: Add two numbers
+tokenizer.decode(t,: XOR of all subarrays of a given range
+tokenizer.decode(t,: Reverse an array according to given conditions
+tokenizer.decode(t,: Longest sub
+tokenizer.decode(t,: Length of Longest subsequence with consecutive elements
+tokenizer.decode(t,: Number of subsets with sum K
+tokenizer.decode(t,: Count pairs from an array whose sum is greater than K
+tokenizer.decode(t,: Check if it is possible to make two sorted arrays equal
+tokenizer.decode(t,: Minimum steps required to make all array elements equal
+tokenizer.decode(t,: Rearrange an array such that sum of all elements are adjacent
+tokenizer.decode(t,: Minimum number of operations required to make a binary string alternating
+tokenizer.decode(t,: Check if sum of two arrays are equal or not
+tokenizer.decode(t,: Largest sub
+tokenizer.decode(t,: Generate palindromic string from given string
+tokenizer.decode(t,: Lexicographically permutation of a given string
+tokenizer.decode(t,: Count occurrences of a word in a sentence
+tokenizer.decode(t,: Largest circle that can be inscribed in a semicircle
+tokenizer.decode(t,: Minimize difference between any two numbers such that their sum is minimum
+tokenizer.decode(t,: Product of all pairs ( i , j ) in an array such that arr [ i ] < j ]
+tokenizer.decode(t,: Check if it is possible to make two integers equal by given operations
+tokenizer.decode(t,: Check whether a given point lies or not
+tokenizer.decode(t,: Largest subarray with sum greater than K
+tokenizer.decode(t,: Sum of all prime factors of a number
+tokenizer.decode(t,: Divide two numbers such that two numbers are equal
+tokenizer.decode(t,: Rearrange an array to maximize the sum of the given array
+tokenizer.decode(t,: Check if two arrays are permutation of each other
+tokenizer.decode(t,: Average of n
+tokenizer.decode(t,: Count pairs from an array whose product is equal to the given array
+tokenizer.decode(t,: Minimum number of operations required to reduce N to 0
+tokenizer.decode(t,: Reverse a number using digits
+tokenizer.decode(t,: Number of sub
+tokenizer.decode(t,: Number of n
+tokenizer.decode(t,: Print all sub
+tokenizer.decode(t,: Sort an array according to given numbers
+tokenizer.decode(t,: Minimize difference between two elements such that their sum is minimum
+usage: evaluator.py [-h] [--references REFERENCES] [--predictions PREDICTIONS]
+evaluator.py: error: unrecognized arguments:  
+run_NL_PL_new.sh: line 220: --references: command not found
+usage: calc_code_bleu.py [-h] --refs REFS [REFS ...] --hyp HYP --lang
+                         {java,javascript,c_sharp,php,go,python,cpp,c,ruby}
+                         [--params PARAMS]
+calc_code_bleu.py: error: the following arguments are required: --refs, --hyp, --lang
+run_NL_PL_new.sh: line 226: --ref: command not found
